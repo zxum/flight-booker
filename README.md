@@ -1,24 +1,16 @@
-# README
+![banner](app/assets/images/flight_booker_banner.png)
+# Project: Flight Booker
+A project built for [The Odin Project Ruby on Rails Course](https://www.theodinproject.com/courses/ruby-on-rails/lessons/building-advanced-forms) to gain experience building Advanced Forms with Active Record. The website acts as a flight booking app to book one-way flights. Users can input any number of passenger for their booking and select their desired journey. 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+## Features
+TBD
 
-* Ruby version
+## Demo 
+TBD
 
-* System dependencies
+## Gems Used 
+TBD
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Reflections 
+TBD
