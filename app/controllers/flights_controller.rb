@@ -3,7 +3,7 @@ class FlightsController < ApplicationController
   # GET /flights
   # GET /flights.json
   def index
-    @airport_options = Airport.all.map{ |a| [a.code, a.id] }
+    @airport_options = Airport.all.map{ |a| [a.location, a.id] }.uniq
     @day_options = Flight.all.map{ |f| f.time.day }.uniq
     @month_options = Flight.all.map{ |f| f.time.month }.uniq
     @year_options = Flight.all.map{ |f| f.time.year }.uniq

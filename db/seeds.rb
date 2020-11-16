@@ -12,7 +12,7 @@ airports = Airport.create([
   { code: 'SFO', location: 'San Fransisco, California', id: '1'},
   { code: 'JFK', location: 'New York City, New York', id: '2'},
   { code: 'DFW', location: 'Dallas, Texas', id: '3'},
-  { code: 'PHL', location: 'Philadelphia, Pennsylvania', id: '4'}
+  { code: 'PHL', location: 'Philadelphia, Pennsylvania', id: '4'},
 ])
 
 flights = Flight.create([
@@ -35,7 +35,6 @@ flights = Flight.create([
   { time: '2021-11-23 15:15:00', duration: '04:00:00', to_airport_id: '4', from_airport_id: '3', id: '8' },
   { time: '2021-11-21 18:44:00', duration: '05:30:00', to_airport_id: '2', from_airport_id: '3', id: '12' },
   { time: '2021-11-20 1:55:00', duration: '08:00:00', to_airport_id: '1', from_airport_id: '3', id: '16' }
-
 ])
 
 p "Created #{Airport.count} airport entries and #{Flight.count} flight entries."

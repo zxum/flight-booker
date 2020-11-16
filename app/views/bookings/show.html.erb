@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<%= @booking.flight.from_airport.code %>
+<%= @booking.flight.to_airport.code %>
+<%= @booking.flight.time %>
+<%= @booking.flight.duration %>
+
+<% @booking.passengers.each do |p| %>
+  <%= p.name %>
+  <%= p.email %>
+<% end %>
+
+<%= link_to 'Back', bookings_path %>
