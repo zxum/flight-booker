@@ -1,74 +1,37 @@
 class FlightsController < ApplicationController
-  before_action :set_flight, only: [:show, :edit, :update, :destroy]
 
   # GET /flights
   # GET /flights.json
   def index
-    @flights = Flight.all
-  end
+    @airport_options = Airport.all.map{ |a| [a.code, a.id] }
+    @day_options = Flight.all.map{ |f| f.time.day }.uniq
+    @month_options = Flight.all.map{ |f| f.time.month }.uniq
+    @year_options = Flight.all.map{ |f| f.time.year }.uniq
 
-  # GET /flights/1
-  # GET /flights/1.json
-  def show
-  end
-
-  # GET /flights/new
-  def new
-    @flight = Flight.new
-  end
-
-  # GET /flights/1/edit
-  def edit
-  end
-
-  # POST /flights
-  # POST /flights.json
-  def create
-    @flight = Flight.new(flight_params)
-
-    respond_to do |format|
-      if @flight.save
-        format.html { redirect_to @flight, notice: 'Flight was successfully created.' }
-        format.json { render :show, status: :created, location: @flight }
+    if params[:day].blank? && params[:month].blank? && params[:year].blank?
+      if params[:from_airport_id].blank? && params[:to_airport_id].blank?
+        @matched_flights = Flight.all
+      elsif params[:from_airport_id].blank?
+        @matched_flights = Flight.where(to_airport_id: params[:to_airport_id])
+      elsif params[:to_airport_id].blank?
+        @matched_flights = Flight.where(from_airport_id: params[:from_airport_id])
       else
-        format.html { render :new }
-        format.json { render json: @flight.errors, status: :unprocessable_entity }
+        @matched_flights = Flight.where(from_airport_id: params[:from_airport_id], to_airport_id: params[:to_airport_id])
       end
-    end
-  end
-
-  # PATCH/PUT /flights/1
-  # PATCH/PUT /flights/1.json
-  def update
-    respond_to do |format|
-      if @flight.update(flight_params)
-        format.html { redirect_to @flight, notice: 'Flight was successfully updated.' }
-        format.json { render :show, status: :ok, location: @flight }
+    elsif !params[:day].blank? && !params[:month].blank? && !params[:year].blank?
+      @matched_date = Date.civil(params[:year].to_i, params[:month].to_i, params[:day].to_i)
+      if params[:from_airport_id].blank? && params[:to_airport_id].blank?
+        @matched_flights = Flight.where(time: @matched_date.all_day)
+      elsif params[:from_airport_id].blank?
+        @matched_flights = Flight.where(to_airport_id: params[:to_airport_id],time: @matched_date.all_day)
+      elsif params[:to_airport_id].blank?
+        @matched_flights = Flight.where(from_airport_id: params[:from_airport_id],time: @matched_date.all_day)
       else
-        format.html { render :edit }
-        format.json { render json: @flight.errors, status: :unprocessable_entity }
+        @matched_flights = Flight.where(from_airport_id: params[:from_airport_id], to_airport_id: params[:to_airport_id], time: @matched_date.all_day)
       end
+    else
+      flash.now[:alert] = "Select a valid date!"
+      redirect_to flights_path
     end
   end
-
-  # DELETE /flights/1
-  # DELETE /flights/1.json
-  def destroy
-    @flight.destroy
-    respond_to do |format|
-      format.html { redirect_to flights_url, notice: 'Flight was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
-
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_flight
-      @flight = Flight.find(params[:id])
-    end
-
-    # Only allow a list of trusted parameters through.
-    def flight_params
-      params.require(:flight).permit(:time, :duration, :to_airport_id, :from_airport_id)
-    end
 end
