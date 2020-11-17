@@ -1,37 +1,81 @@
-<%= form_with(model: flight, local: true) do |form| %>
-  <% if flight.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(flight.errors.count, "error") %> prohibited this flight from being saved:</h2>
+<%= form_with(url: "/flights", method: "get", local: true) do %>
+  
 
-      <ul>
-      <% flight.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <label class="label has-text-white">Flight</label>
     </div>
-  <% end %>
+    
+    <div class="field-body">
+      <div class="field">
+        <div class="control is-expanded has-icons-left">
+          <div class="select is-rounded"> 
+            <span class="icon is-small is-left has-text-primary">
+              <i class="fa fa-plane-departure" aria-hidden="true"></i>
+            </span>
+            <%= select_tag(:from_airport_id, options_for_select(@airport_options, selected: params[:from_airport_id] ), include_blank: true)%>
+          </div>
+        </div>
+      </div>
+   
 
-  <div class="field">
-    <%= form.label :time %>
-    <%= form.datetime_select :time %>
+      <div class="field">
+        <div class="control is-expanded has-icons-left">
+          <div class="select is-rounded">
+          <span class="icon is-small is-left has-text-primary">
+            <i class="fa fa-plane-arrival" aria-hidden="true"></i>
+          </span>
+            <%= select_tag(:to_airport_id, options_for_select(@airport_options, selected: params[:to_airport_id] ), include_blank: true) %>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control is-expanded has-icons-left">
+        <div class="select is-rounded">
+          <span class="icon is-small is-left has-text-primary">
+            <i class="fa fa-user" aria-hidden="true"></i>
+          </span>
+            <%= select_tag(:no_of_passengers, options_for_select(1..4, selected: params[:no_of_passengers]), include_blank: false)%>
+          </div>
+        </div>
+      </div>
+    
+
+      <div class="field-label is-normal">
+        <label class="label has-text-white">Date</label>
+      </div>
+
+      <div class="field">
+        <div class="control is-expanded">
+          <div class="select is-rounded">
+            <%= select_tag(:day, options_for_select(@day_options, selected: params[:day]), include_blank: true ) %>
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <div class="control is-expanded">
+          <div class="select is-rounded">
+              <%= select_tag(:month, options_for_select(@month_options, selected: params[:month]), include_blank: true ) %>
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <div class="control is-expanded">
+          <div class="select is-rounded">
+            <%= select_tag(:year, options_for_select(@year_options, selected: params[:year]), include_blank: true ) %>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control is-expanded">
+          <div >
+            <%= submit_tag("Search", class: "button is-rounded") %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :duration %>
-    <%= form.time_select :duration %>
-  </div>
-
-  <div class="field">
-    <%= form.label :to_airport_id %>
-    <%= form.number_field :to_airport_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :from_airport_id %>
-    <%= form.number_field :from_airport_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>

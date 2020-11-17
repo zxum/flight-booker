@@ -14,4 +14,64 @@
  *= require_self
  */
 
+$darkteal: hsl(204, 47%, 26%);
+$lightteal: hsl(198, 43%, 37%);
+$greytan: hsl(22, 8%, 79%);
+$greyblue: hsl(197, 16%, 61%);
+$primary: $lightteal;
+$dark: $darkteal;
+$info: $greytan;
+$success: $greyblue;
+$link: $darkteal;
+$text: white;
 @import "bulma";
+body,
+html {
+    height: 100%;
+    background: rgb(206, 201, 198);
+    background: linear-gradient(0deg, rgba(206, 201, 198, 1) 0%, rgba(149, 170, 178, 1) 34%, rgba(54, 112, 136, 1) 77%, rgba(35, 72, 96, 1) 100%);
+    background-attachment: fixed;
+}
+
+h1,
+h2 {
+    font-family: 'Quicksand', sans-serif;
+}
+
+p {
+    font-size: 15px;
+    font-family: 'Open Sans', sans-serif;
+    margin-left: 1.5rem;
+}
+
+.navbar {
+    background-color: transparent;
+}
+
+.field-label {
+    flex-grow: 0;
+    min-width: 100px;
+}
+
+.flight-form {
+    margin-bottom: 3em;
+}
+
+.radio-btn {
+    display: inline-flex;
+    align-items: center;
+}
+
+div.select.is-rounded select {
+    border-color: transparent;
+    opacity: 75%;
+}
+
+div.icon-heading {
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+div.icon-heading span {
+    padding-right: 10px;
+}

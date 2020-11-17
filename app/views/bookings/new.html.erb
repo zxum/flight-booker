@@ -1,5 +1,18 @@
-<h1>New Booking</h1>
 
-<%= render 'form', booking: @booking %>
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-7">
+        <%= link_to 'Back', :back, class: "has-text-info"%>
+        </br></br>
+        <%= render 'selected_flight'%>
+        <%= render 'form', booking: @booking %>
+        
+      </div>
+    </div>
+  </div>
+</section>
 
-<%= link_to 'Back', bookings_path %>
+
+
+

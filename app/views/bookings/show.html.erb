@@ -1,13 +1,37 @@
-<p id="notice"><%= notice %></p>
 
-<%= @booking.flight.from_airport.code %>
-<%= @booking.flight.to_airport.code %>
-<%= @booking.flight.time %>
-<%= @booking.flight.duration %>
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-7">
+        <%= link_to 'Back', :back, class: "has-text-info"%>
+        </br></br>
+        <%= render 'booking_flight'%>
+       <% i = 1 %>
+        <% @booking.passengers.each do |p| %>
 
-<% @booking.passengers.each do |p| %>
-  <%= p.name %>
-  <%= p.email %>
-<% end %>
+        <div class="field is-horizontal">
+    
+          <div class="field-body">
+            <div class="field-label is-normal">
+              <label class="label has-text-white">Passenger <%= i%></label>
+            </div>
+            
+            <div class="field has-addons">
+              <div class="control">
+                <span class="button is-static is-info is-rounded"><%= p.name%></span>
+              </div>
+              <div class="control">
+                <span class="button is-static is-info is-rounded"><%= p.email %></span>
+              </div>
+            </div>
 
-<%= link_to 'Back', bookings_path %>
+          </div>
+        </div>
+        
+        <% i+= 1 %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+

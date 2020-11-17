@@ -1,5 +1,9 @@
 
+
+
+
 <%= form_with(model: booking, local: true) do |form| %>
+<% i = 1 %>
   <% if booking.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
@@ -11,14 +15,34 @@
       </ul>
     </div>
   <% end %>
-  
   <%= form.fields_for :passengers do |passengers| %>
+
+  <div class="field is-horizontal">
+    
+    <div class="field-body">
+      <div class="field-label is-normal">
+        <label class="label has-text-white">Passenger <%= i%></label>
+      </div>
+      
+      <div class="field">
+        <div class="control is-expanded">
+          <%= passengers.text_field :name, placeholder: "Name", required: true, class: "input is-rounded" %>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control is-expanded">
+          <%= passengers.email_field :email, placeholder: "Email", required: true, class: "input is-rounded" %>
+        </div>
+      </div>
+    </div>
+  </div>
   
-    <%= passengers.text_field :name, placeholder: "Name", required: true, class: "input" %>
-    <%= passengers.email_field :email, placeholder: "Email", required: true, class: "input" %>
+  <% i+= 1 %>
   <% end %>
 
-  <%= form.hidden_field :flight_id, value: params[:flight_id] %>  
+      <%= form.hidden_field :flight_id, value: params[:flight_id] %>  
 
-  <%= form.submit %>
+<%= form.submit class: "button is-rounded is-success is-centered" %>
+
 <% end %>
