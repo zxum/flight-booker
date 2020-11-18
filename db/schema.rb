@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2020_11_16_211125) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "airports", force: :cascade do |t|
     t.string "location"
     t.string "code"
@@ -20,8 +23,8 @@ ActiveRecord::Schema.define(version: 2020_11_16_211125) do
   end
 
   create_table "bookings", force: :cascade do |t|
-    t.integer "flight_id"
-    t.integer "passenger_id"
+    t.bigint "flight_id"
+    t.bigint "passenger_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["flight_id"], name: "index_bookings_on_flight_id"
@@ -45,4 +48,6 @@ ActiveRecord::Schema.define(version: 2020_11_16_211125) do
     t.integer "booking_id"
   end
 
+  add_foreign_key "bookings", "flights"
+  add_foreign_key "bookings", "passengers"
 end
