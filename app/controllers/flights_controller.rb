@@ -30,8 +30,7 @@ class FlightsController < ApplicationController
         @matched_flights = Flight.where(from_airport_id: params[:from_airport_id], to_airport_id: params[:to_airport_id], time: @matched_date.all_day)
       end
     else
-      flash.now[:alert] = "Select a valid date!"
-      redirect_to flights_path
+      redirect_to flights_path, alert: "Something went wrong. Please try again."
     end
   end
 end

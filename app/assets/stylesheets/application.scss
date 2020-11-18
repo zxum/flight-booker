@@ -75,3 +75,20 @@ div.icon-heading {
 div.icon-heading span {
     padding-right: 10px;
 }
+
+a.has-text-info:hover {
+    background-color: transparent;
+    color: $darkteal !important;
+}
+
+.notification:not(:last-child) {
+    margin-bottom: 0rem;
+}
+
+.notification {
+    padding: 0.5rem 2.5rem 0.5rem 1.5rem;
+}
+
+.navbar-item div.field {
+    margin-bottom: 0;
+}
