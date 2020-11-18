@@ -38,6 +38,11 @@ h2 {
     font-family: 'Quicksand', sans-serif;
 }
 
+.subtitle,
+.title {
+    word-break: keep-all;
+}
+
 p {
     font-size: 15px;
     font-family: 'Open Sans', sans-serif;
@@ -48,9 +53,32 @@ p {
     background-color: transparent;
 }
 
-.field-label {
+.field.is-horizontal.flight-search {
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.field-body.flight-search-body {
+    margin-bottom: 1rem;
+    flex-grow: 0;
+    display: flex;
+}
+
+.field {
+    margin-right: 0px;
+}
+
+.field-body .field:last-child {
+    margin-right: 1.75rem;
+}
+
+.field-label.passenger {
     flex-grow: 0;
     min-width: 100px;
+}
+
+label.label {
+    word-break: keep-all;
 }
 
 .flight-form {
@@ -62,7 +90,9 @@ p {
     align-items: center;
 }
 
-div.select.is-rounded select {
+div.select.is-rounded select,
+input.input.is-rounded,
+span.is-static.button {
     border-color: transparent;
     opacity: 75%;
 }
