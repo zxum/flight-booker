@@ -19,7 +19,7 @@ Check out the live version here: [Link](https://salty-bastion-40242.herokuapp.co
 
 The live site has been seeded with flights. 
 
-![demo](app/assets/images/flight-booker-demo.gif)
+![demo](app/assets/images/flight-booker-demo-v2.gif)
 
 ## Gems Used 
 * [Bulma](https://bulma.io/)
