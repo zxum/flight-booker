@@ -23,5 +23,4 @@ test:
 production:
   <<: *default
   database: flight_booker_production
-  username: flight_booker
-  password: <%= ENV['FLIGHT_BOOKER_DATABASE_PASSWORD'] %>
+  username: flight-booker
