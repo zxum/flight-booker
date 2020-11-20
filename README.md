@@ -10,20 +10,47 @@ Users can search all flights, based on origin, destination, and date. If no date
 
 The user clicks on the radio button the left of each flight to select it, and use the Submit button to start a booking. Once on the booking page, the user can input the personal information for each passenger on the booking. The number of passengers is determined by the search input from the previous page. 
 
-Once a booking is created, the user can see the details of the flight and passengers. However, the booking cannot be edited or deleted.
+Once a booking is created, the user can see the details of the flight and passengers. However, the booking cannot be edited or deleted. 
+
+In the development version of the application, once the booking details are submitted, an email will be sent out to the passengers. Note, this feature does not exist in the live demo. If you'd like to check out this feature, go to the Get Started section of this Readme. 
 
 Design was not a requirement for the project, however, I added styling using the [Bulma](https://bulma.io/) gem, which is a great flex-box based, open-source CSS framework. 
 
 ## Demo 
 Check out the live version here: [Link](https://salty-bastion-40242.herokuapp.com/)
 
-The live site has been seeded with flights. 
+The live site has been seeded with flights, however the mailing feature is not active on the live site. If you'd like to try the mailing feature, clone this repo to your local machine and test it out. See the Get started section for more details. 
 
 ![demo](app/assets/images/flight-booker-demo-v2.gif)
 
 ## Gems Used 
 * [Bulma](https://bulma.io/)
 * [Better Errors](https://github.com/BetterErrors/better_errors)
+* [Letter Opener](https://github.com/ryanb/letter_opener)
+
+## Get Started 
+Make sure you have Rails and Git installed on your machine before proceeding. 
+
+See below for steps: 
+```bash
+# First clone this repo to your local machine
+$ git clone https://github.com/zxum/flight-booker.git
+
+# Install any required gems 
+$ bundle install 
+
+# Migrate the database 
+$ rails db:migrate 
+
+# Load the sample data (optional)
+$ rails db:seed
+
+# Start local server 
+$ rails server 
+```
+
+Once all the above is complete, open a web browser and go to localhost:3000 
+
 
 ## Reflections 
 Personally, the hardest aspect of this project was getting the search button functioning. In retrospect, I realize the problem was rather simple, and straightforward, but initially when I faced the roadblock, I really had no idea what to do. I am continuously grateful for the amazing community of the Odin Project, who guided me through my code, and gave me advice without completely handing me the answers. It truly helped my understanding of Advanced Forms in Rails. 
