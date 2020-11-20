@@ -12,6 +12,7 @@ class BookingsController < ApplicationController
     # raise booking_params.inspect
     if @booking.save 
       flash[:success] = 'Booking completed!'
+      BookingMailer.thank_you_email(@booking).deliver_now
       redirect_to booking_path(@booking)
     else
       flash[:alert] = 'An error occured!'

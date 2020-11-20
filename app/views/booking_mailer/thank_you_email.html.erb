@@ -1,0 +1,10 @@
+<p> Thank you <%= @passenger.name%> for booking your flight! </p>
+
+ 
+<p><strong>Flight Details</strong></p>
+<p><strong>Origin:</strong> <%= @booking.flight.from_airport.code %></p>
+<p><strong>Destination:</strong> <%= @booking.flight.to_airport.code %></p>
+<p><strong>Date:</strong> <%= @booking.flight.time.strftime("%B %e, %Y") %></p> 
+<p><strong>Duration:</strong> <%= @booking.flight.duration.strftime("%lh %Mm") %></p> 
+
+<p>To see your booking, please visit the <%= link_to 'booking page', booking_url(@booking) %></p>
